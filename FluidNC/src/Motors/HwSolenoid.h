@@ -5,10 +5,11 @@
 namespace MotorDrivers {
     class HwSolenoid : public RcServo {
     protected:
-        bool _dir_invert = false;  // Direction invert setting
-
-        void config_message() override;
-        void update() override;
+        Pin           _output_pin;              // Register output pin as a Pin class so we can call .write on it.
+        bool          _dir_invert     = false;  // Direction invert setting
+        const uint8_t _update_rate_ms = 20;     // How frequently the solenoid gets updated
+        void          config_message() override;
+        void          update() override;
 
     public:
         HwSolenoid() = default;

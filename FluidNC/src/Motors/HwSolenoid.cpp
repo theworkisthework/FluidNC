@@ -13,8 +13,11 @@ namespace MotorDrivers {
             _has_errors = true;
             return;  // We cannot continue without the output pin
         }
+        _output_pin.setAttr(Pin::Attr::Output);
+        _axis_index = axis_index();
 
         config_message();
+        startUpdateTask(_update_rate_ms);
     }
 
     void HwSolenoid::update() {
@@ -30,13 +33,9 @@ namespace MotorDrivers {
             return;
         }
 
-        float mpos = steps_to_mpos(get_axis_motor_steps(_axis_index), _axis_index);  // get the axis machine position in mm
-
-        bool is_solenoid_on = _dir_invert ? (mpos < 0.0) : (mpos > 0.0);
-
-        log_warn("is_solenoid_on: " << is_solenoid_on);
-
-        _output_pin.synchronousWrite(is_solenoid_on);
+        float mpos           = steps_to_mpos(get_axis_motor_steps(_axis_index), _axis_index);  // get the axis machine position in mm
+        bool  is_solenoid_on = _dir_invert ? (mpos < 0.0) : (mpos > 0.0);
+        _output_pin.write(is_solenoid_on);
     }
 
     void HwSolenoid::set_disable(bool disable) {}  // NOP
