@@ -17,7 +17,7 @@ namespace MotorDrivers {
         _axis_index = axis_index();
 
         config_message();
-        startUpdateTask(_update_rate_ms);
+        schedule_update(this, _update_rate_ms);
     }
 
     void HwSolenoid::update() {
