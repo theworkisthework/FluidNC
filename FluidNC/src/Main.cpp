@@ -80,12 +80,12 @@ void setup() {
                 }
             }
 
-            // for (size_t i = 1; i < MAX_N_UARTS; i++) {
-            //     if (config->_nextion[i]) {
-            //         log_info("Main creating nextion " << i);
-            //         config->_nextion[i]->init();
-            //     }
-            // }
+            for (size_t i = 1; i < MAX_N_UARTS; i++) {
+                if (config->_nextion[i]) {
+                    log_info("Main creating nextion " << i);
+                    config->_nextion[i]->init();
+                }
+            }
 
             if (config->_i2so) {
                 config->_i2so->init();
