@@ -7,7 +7,6 @@
 // }
 
 size_t Nextion::write(uint8_t c) {
-    log_info("Hello from nextion");
     return _uart->write(c);
 }
 
