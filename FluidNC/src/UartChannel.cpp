@@ -128,6 +128,7 @@ void UartChannel::out_acked(const std::string& s, const char* tag) {
 UartChannel Uart0(0, true);  // Primary serial channel with LF to CRLF conversion
 
 void uartInit() {
+    log_info("UartChannel: uartInit() creating uart0");
     auto uart0 = new Uart(0);
     uart0->begin(BAUD_RATE, UartData::Bits8, UartStop::Bits1, UartParity::None);
     Uart0.init(uart0);
