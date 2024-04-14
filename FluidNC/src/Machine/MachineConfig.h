@@ -11,6 +11,7 @@
 #include "../CoolantControl.h"
 #include "../Kinematics/Kinematics.h"
 #include "../WebUI/BTConfig.h"
+// #include "../Nextion.h"
 #include "../Control.h"
 #include "../Probe.h"
 #include "src/Parking.h"
@@ -80,6 +81,8 @@ namespace Machine {
 
         UartChannel* _uart_channels[MAX_N_UARTS] = { nullptr };
         Uart*        _uarts[MAX_N_UARTS]         = { nullptr };
+
+        Nextion* _nextion[MAX_N_UARTS] = { nullptr };
 
         float _arcTolerance      = 0.002f;
         float _junctionDeviation = 0.01f;

@@ -7,6 +7,7 @@
 #include "src/Configuration/Configurable.h"
 #include "src/WebUI/InputBuffer.h"  // WebUI::inputBuffer
 #include "src/UartChannel.h"
+#include "../Nextion.h"
 #include "src/Event.h"
 #include <algorithm>
 
