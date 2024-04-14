@@ -50,7 +50,6 @@ void Nextion::init(Uart* uart) {
 
 size_t Nextion::write(const uint8_t* buffer, size_t length) {
     // Replace \n with \r\n
-    log_info("Nextion write called");
     if (_addCR) {
         size_t rem      = length;
         char   lastchar = '\0';
